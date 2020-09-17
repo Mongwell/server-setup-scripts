@@ -94,6 +94,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 cp post-chroot.sh /mnt/root/post-chroot.sh
 arch-chroot /mnt /root/post-chroot.sh $hostname $timezone
+rm /mnt/root/post-chroot.sh
 
 umount -R /mnt
 reboot
