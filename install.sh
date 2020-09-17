@@ -65,7 +65,7 @@ then
 	umount $swap_part
 fi
 
-mkfs.fat $uefi_part
+mkfs.fat -F32 $uefi_part
 mkfs.ext4 $root_part
 if [ -n "$swap_part" ]
 then
@@ -94,3 +94,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 cp post-chroot.sh /mnt/root/post-chroot.sh
 arch-chroot /mnt /root/post-chroot.sh $hostname $timezone
+
+umount -R /mnt
+reboot
