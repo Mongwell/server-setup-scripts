@@ -18,7 +18,19 @@ echo "127.0.0.1		localhost
 
 passwd
 
-pacman -Sy grub efibootmgr intel-ucode
+cpuvendor=$(cat /proc/cpuinfo | grep vendor | uniq | awk -F':' '{print $2}' | tr -d " ")
+microcode=""
+if [ "$cpuvendor" = "GenuineIntel" ]
+then
+	microcode="intel-ucode"
+elif [ "$cpuvendor" = "AuthenticAMD" ]
+then
+	microcode="amd-ucode"
+else
+	echo "CPU vendor not found" 1>&2
+fi
+
+pacman -Sy grub efibootmgr $microcode
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
