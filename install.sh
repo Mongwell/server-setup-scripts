@@ -84,7 +84,7 @@ fi
 
 reflector --protocol https --latest 70 --sort rate --save /etc/pacman.d/mirrorlist
 
-pacstrap /mnt base linux linux-firmware dhcpcd vim openssh man-db man-pages
+pacstrap /mnt base linux linux-firmware dhcpcd vim git openssh man-db man-pages
 
 
 ##############fstab##############
