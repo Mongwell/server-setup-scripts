@@ -5,7 +5,7 @@
 if [ -z "$4" ]
 then
 	echo "Too few arguments.
-Usage: $0 TIMEZONE ROOT_PARTITION UEFI_PARTITION SWAP_PARTITION
+Usage: $0 HOSTNAME TIMEZONE ROOT_PARTITION UEFI_PARTITION SWAP_PARTITION
 	
 	Required Arguments:
 	HOSTNAME	--  hostname to set for device
